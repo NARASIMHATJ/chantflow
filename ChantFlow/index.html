@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChantFlow - Create and play customized devotional chanting sessions">
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>🕉 ChantFlow - Devotional Chant Player</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%238B4513' width='192' height='192'/><text x='50%' y='50%' font-size='100' text-anchor='middle' dy='.3em' fill='%23FFD700'>🕉</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%238B4513' width='180' height='180'/><text x='50%' y='50%' font-size='90' text-anchor='middle' dy='.3em' fill='%23FFD700'>🕉</text></svg>">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">🕉 ChantFlow</h1>
+                <p class="app-subtitle">Create & Play Devotional Sessions</p>
+            </div>
+            <button id="installBtn" class="install-btn" style="display: none;">
+                📲 Install App
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Player Section -->
+            <section class="player-section">
+                <div class="player-status">
+                    <div class="current-item">
+                        <h3>Now Playing</h3>
+                        <p id="currentTrack">No track selected</p>
+                        <p id="sessionInfo" class="session-info"></p>
+                    </div>
+                    <div class="progress-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                        <p id="timeDisplay" class="time-display">00:00 / 00:00</p>
+                    </div>
+                </div>
+                
+                <audio id="audioPlayer"></audio>
+
+                <!-- Player Controls -->
+                <div class="player-controls">
+                    <button id="playBtn" class="btn btn-large btn-primary">
+                        ▶ Play
+                    </button>
+                    <button id="pauseBtn" class="btn btn-large btn-secondary" style="display: none;">
+                        ⏸ Pause
+                    </button>
+                    <button id="stopBtn" class="btn btn-large btn-secondary">
+                        ⏹ Stop
+                    </button>
+                </div>
+            </section>
+
+            <!-- Sequence Builder Section -->
+            <section class="builder-section">
+                <div class="section-header">
+                    <h2>Build Your Session</h2>
+                    <button id="clearAllBtn" class="btn btn-small btn-danger" title="Clear all items">
+                        🗑️ Clear
+                    </button>
+                </div>
+
+                <div class="track-selector">
+                    <label for="trackSelect">Select Audio:</label>
+                    <select id="trackSelect">
+                        <option value="">-- Choose a track --</option>
+                    </select>
+                    
+                    <label for="repetitionCount">Repetitions:</label>
+                    <div class="repeat-input">
+                        <input type="number" id="repetitionCount" min="1" max="1008" value="1">
+                        <div class="quick-buttons">
+                            <button class="btn btn-tiny" data-count="11">11</button>
+                            <button class="btn btn-tiny" data-count="21">21</button>
+                            <button class="btn btn-tiny" data-count="54">54</button>
+                            <button class="btn btn-tiny" data-count="108">108</button>
+                        </div>
+                    </div>
+
+                    <button id="addTrackBtn" class="btn btn-primary">
+                        ➕ Add to Sequence
+                    </button>
+                </div>
+
+                <!-- Sequence List -->
+                <div class="sequence-list">
+                    <h3>Your Sequence</h3>
+                    <div id="sequenceContainer" class="items-list">
+                        <p class="empty-message">No items added yet. Start building your session!</p>
+                    </div>
+                </div>
+
+                <!-- Session Stats -->
+                <div class="stats-panel">
+                    <div class="stat">
+                        <span class="stat-label">Total Items:</span>
+                        <span id="totalItems" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Estimated Duration:</span>
+                        <span id="totalDuration" class="stat-value">0 min</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="settings-section">
+                <h2>Settings</h2>
+                <div class="settings-group">
+                    <label>
+                        <input type="checkbox" id="autoPlayNext" checked>
+                        Auto-play next item
+                    </label>
+                    <label>
+                        <input type="checkbox" id="loopSession">
+                        Loop entire session
+                    </label>
+                </div>
+                <div class="settings-group">
+                    <label for="volumeControl">Volume:</label>
+                    <div class="volume-control">
+                        <input type="range" id="volumeControl" min="0" max="100" value="70">
+                        <span id="volumeDisplay">70%</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>ChantFlow - Simple & Powerful Devotional Chanting 🙏</p>
+            <p class="version">v1.0 | Works Offline</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').catch(err => {
+                console.log('ServiceWorker registration failed:', err);
+            });
+        }
+    </script>
+</body>
+</html>
