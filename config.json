@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "ChantFlow",
+    "version": "1.0.0",
+    "description": "Devotional Chant Player - Create and play customized chanting sessions",
+    "author": "Your Name",
+    "supportEmail": "support@example.com"
+  },
+  "tracks": [
+    {
+      "id": "om",
+      "name": "🕉 Om Chant",
+      "file": "audio/om.mp3",
+      "duration": 0,
+      "category": "chants"
+    },
+    {
+      "id": "music1",
+      "name": "🎵 Music 1",
+      "file": "audio/music1.mp3",
+      "duration": 0,
+      "category": "music"
+    },
+    {
+      "id": "censor",
+      "name": "✨ Censor",
+      "file": "audio/censor.mp3",
+      "duration": 0,
+      "category": "ambient"
+    }
+  ],
+  "defaultRepetitions": [
+    { "label": "11x", "value": 11 },
+    { "label": "21x", "value": 21 },
+    { "label": "54x", "value": 54 },
+    { "label": "108x", "value": 108 }
+  ],
+  "settings": {
+    "autoPlayNext": true,
+    "loopSession": false,
+    "defaultVolume": 70,
+    "cacheAudio": true,
+    "enableNotifications": false
+  }
+}
