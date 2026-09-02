@@ -3,8 +3,8 @@
     "name": "ChantFlow",
     "version": "1.0.0",
     "description": "Devotional Chant Player - Create and play customized chanting sessions",
-    "author": "Your Name",
-    "supportEmail": "support@example.com"
+    "author": "Narasimha TJ",
+    "supportEmail": "tj.narasimha@gmail.com"
   },
   "tracks": [
     {
@@ -25,6 +25,83 @@
       "id": "censor",
       "name": "✨ Censor",
       "file": "audio/censor.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+    {
+      "id": "Raghavendra17db1cycleuntitled",
+      "name": "Raghavendra17db1cycleuntitled",
+      "file": "audio/Raghavendra17db1cycleuntitled.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause1.5",
+      "name": "Pause1.5",
+      "file": "audio/Pause1.5.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "bell1",
+      "name": "bell1",
+      "file": "audio/bell1.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause1",
+      "name": "Pause1",
+      "file": "audio/Pause1.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause2",
+      "name": "Pause2",
+      "file": "audio/Pause2.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause3",
+      "name": "Pause3",
+      "file": "audio/Pause3.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause4",
+      "name": "Pause4",
+      "file": "audio/Pause4.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause6",
+      "name": "Pause6",
+      "file": "audio/Pause6.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause8",
+      "name": "Pause8",
+      "file": "audio/Pause8.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pause10",
+      "name": "Pause10",
+      "file": "audio/Pause10.mp3",
+      "duration": 0,
+      "category": "ambient"
+    },
+	{
+      "id": "Pausepoint5",
+      "name": "Pausepoint5",
+      "file": "audio/Pausepoint5.mp3",
       "duration": 0,
       "category": "ambient"
     }
