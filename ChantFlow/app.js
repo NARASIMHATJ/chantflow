@@ -27,7 +27,18 @@ class ChantFlow {
         this.tracks = [
             { id: 'om', name: '🕉 Om Chant', file: 'audio/om.mp3', duration: 0 },
             { id: 'music1', name: '🎵 Music 1', file: 'audio/music1.mp3', duration: 0 },
-            { id: 'censor', name: '✨ Censor', file: 'audio/censor.mp3', duration: 0 }
+            { id: 'censor', name: '✨ Censor', file: 'audio/censor.mp3', duration: 0 },
+            { id: 'Raghavendra17db1cycleuntitled', name: 'Raghavendra17db1cycleuntitled', file: 'audio/Raghavendra17db1cycleuntitled.mp3', duration: 0 },
+			{ id: 'Pause1.5', name: 'Pause1.5', file: 'audio/Pause1.5.mp3', duration: 0 },
+			{ id: 'bell1', name: 'bell1.mp3', file: 'audio/bell1.mp3', duration: 0 },
+			{ id: 'Pause1', name: 'Pause1.mp3', file: 'audio/Pause1.mp3', duration: 0 },
+			{ id: 'Pause2', name: 'Pause2.mp3', file: 'audio/Pause2.mp3', duration: 0 },
+			{ id: 'Pause3', name: 'Pause3.mp3', file: 'audio/Pause3.mp3', duration: 0 },
+			{ id: 'Pause4', name: 'Pause4.mp3', file: 'audio/Pause4.mp3', duration: 0 },
+			{ id: 'Pause6', name: 'Pause6.mp3', file: 'audio/Pause6.mp3', duration: 0 },
+			{ id: 'Pause8', name: 'Pause8.mp3', file: 'audio/Pause8.mp3', duration: 0 },
+			{ id: 'Pause10', name: 'Pause10.mp3', file: 'audio/Pause10.mp3', duration: 0 },
+			{ id: 'Pausepoint5', name: 'Pausepoint5.mp3', file: 'audio/Pausepoint5.mp3', duration: 0 }
         ];
 
         // Populate track selector
