@@ -25,9 +25,9 @@ class ChantFlow {
     loadTracks() {
         // Audio files available in the audio directory
         this.tracks = [
-            { id: 'om', name: '🕉 Om Chant', file: 'audio/om.mp3', duration: 0 },
-            { id: 'music1', name: '🎵 Music 1', file: 'audio/music1.mp3', duration: 0 },
-            { id: 'censor', name: '✨ Censor', file: 'audio/censor.mp3', duration: 0 },
+            { id: 'om', name: 'Om Chant', file: 'audio/om.mp3', duration: 0 },
+            { id: 'music1', name: 'Music 1', file: 'audio/music1.mp3', duration: 0 },
+            { id: 'censor', name: 'Censor', file: 'audio/censor.mp3', duration: 0 },
             { id: 'Raghavendra17db1cycleuntitled', name: 'Raghavendra17db1cycleuntitled', file: 'audio/Raghavendra17db1cycleuntitled.mp3', duration: 0 },
 			{ id: 'Pause1.5', name: 'Pause1.5', file: 'audio/Pause1.5.mp3', duration: 0 },
 			{ id: 'bell1', name: 'bell1.mp3', file: 'audio/bell1.mp3', duration: 0 },
