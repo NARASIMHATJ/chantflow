@@ -31,7 +31,6 @@ Choose ONE option below and follow the steps. No credit card needed!
   - manifest.json
   - service-worker.js
   - config.json
-  - .htaccess
   - README.md
   - audio folder with mp3 files
 

@@ -130,11 +130,14 @@ ChantFlow/
 ├── styles.css              # Styling
 ├── manifest.json           # PWA configuration
 ├── service-worker.js       # Offline support
-├── .htaccess              # Apache server config (optional)
+├── config.json             # Track list (generated from audio/ - do not hand-edit paths)
 ├── audio/                 # Audio files folder
 │   ├── om.mp3
 │   ├── music1.mp3
 │   └── censor.mp3
+├── tools/
+│   ├── generate-config.js  # Rebuilds config.json from audio/ (Node)
+│   └── generate-config.ps1 # Same thing for Windows without Node
 └── README.md              # This file
 ```
 
@@ -147,12 +150,25 @@ ChantFlow/
 2. **Upload to `/audio/` folder**
    - Add your MP3 file (e.g., `om_chant.mp3`)
 
-3. **Register in app.js**
-   - Open `app.js` and find the `loadTracks()` method
-   - Add your track:
-   ```javascript
-   { id: 'om_chant', name: '🕉 Om Chant', file: 'audio/om_chant.mp3', duration: 0 }
+3. **Regenerate `config.json`**
+
+   The track list comes from `config.json`, which is generated from the contents
+   of `audio/`. You do not need to edit any JavaScript.
+
+   If you push to GitHub, the `Update config.json from audio files` workflow does
+   this for you automatically on every push that touches `audio/`.
+
+   To do it locally instead:
+   ```bash
+   node tools/generate-config.js
    ```
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File tools/generate-config.ps1
+   ```
+
+   A new file gets a display name and category guessed from its filename. If you
+   edit a track's `name` or `category` in `config.json` by hand, the generator
+   keeps your edit - it only adds and removes entries.
 
 4. **Restart & Reload**
    - Your track appears in the "Select Audio" dropdown
@@ -171,7 +187,30 @@ ChantFlow/
 
 - **11x, 21x, 54x, 108x buttons** - Instantly set repetitions
 - **🗑️ Clear** - Remove all items from session
-- **Loop Session** - Automatically repeat the entire sequence
+- **Repeat forever** - Keep cycling the sequence until you press Stop
+
+### Repeating the Whole Sequence
+
+Each item in the sequence has its own repetition count, and the sequence as a
+whole has a cycle count of its own. A start and an end track can be attached
+outside the loop, so an opening and closing bell plays once rather than once per
+cycle.
+
+For example:
+
+| Slot | Track | Count |
+| --- | --- | --- |
+| Session Start | bell | 1x |
+| Sequence item 1 | om | 108x |
+| Sequence item 2 | sloka1 | 5x |
+| Sequence item 3 | sloka2 | 10x |
+| Repeat the whole sequence | | 108 cycles |
+| Session End | bell | 1x |
+
+That plays the bell once, then 108 cycles of `om x108, sloka1 x5, sloka2 x10`,
+then the closing bell once - 13,286 plays in total.
+
+Leave **Session Start** or **Session End** on `-- None --` to skip either one.
 
 ### Offline Use
 

@@ -16,9 +16,9 @@ Your ChantFlow Progressive Web App (PWA) is ready to deploy and use!
 - **manifest.json** - PWA configuration
 
 ### Configuration Files
-- **config.json** - Audio tracks configuration
-- **.htaccess** - Apache server configuration
-- **web.config** - IIS/Windows server configuration
+- **config.json** - Audio tracks configuration (generated from `audio/`)
+- **tools/generate-config.js** - Rebuilds `config.json` from `audio/` (Node)
+- **tools/generate-config.ps1** - Same, for Windows without Node
 - **.gitignore** - Git repository ignore file
 
 ### Documentation
@@ -40,7 +40,8 @@ Your ChantFlow Progressive Web App (PWA) is ready to deploy and use!
 ✅ **Progress Bar** - Visual track progress with time display
 ✅ **Volume Control** - Adjustable volume slider
 ✅ **Auto-Play** - Automatically play next item
-✅ **Loop Session** - Repeat entire session continuously
+✅ **Sequence Cycles** - Repeat the whole sequence N times, or forever
+✅ **Start / End Tracks** - Opening and closing audio that plays once, outside the cycles
 ✅ **Session Stats** - Total items & duration calculator
 ✅ **Persistent Storage** - Save playlists locally (browser)
 ✅ **Offline Support** - Works completely offline via Service Worker
@@ -113,9 +114,12 @@ Edit `styles.css` - Lines 8-16:
 
 ### 3. Add Audio Files
 1. Convert to MP3 (128kbps recommended)
-2. Upload to `/audio/` folder
-3. Register in `app.js` - Line 19-24
-4. Register in `config.json` - Lines 9-27
+2. Drop the file in the `/audio/` folder
+3. Regenerate `config.json` with `node tools/generate-config.js`
+   (or `tools/generate-config.ps1` on Windows without Node)
+
+Pushing to GitHub regenerates it automatically. There is no track list in
+`app.js` to maintain - the app reads `config.json` at startup.
 
 ### 4. Add More Features
 - Edit `app.js` to add new functionality
@@ -133,9 +137,8 @@ ChantFlow/
 ├── styles.css              Styling
 ├── manifest.json           PWA config
 ├── service-worker.js       Offline support
-├── config.json             Tracks config
-├── .htaccess              Apache config
-├── web.config             IIS config
+├── config.json             Tracks config (generated)
+├── tools/                  config.json generators
 ├── .gitignore             Git ignore
 ├── audio/                 Audio files folder
 │   ├── om.mp3

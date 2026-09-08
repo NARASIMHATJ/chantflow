@@ -23,9 +23,8 @@ ChantFlow/
 ├── 📄 styles.css ...................... Styling (responsive)
 ├── 📄 manifest.json ................... PWA configuration
 ├── 📄 service-worker.js ............... Offline support
-├── 📄 config.json ..................... Audio tracks config
-├── 🔧 .htaccess ....................... Apache server config
-├── 🔧 web.config ...................... IIS server config
+├── 📄 config.json ..................... Audio tracks config (generated)
+├── 📁 tools/ .......................... config.json generators
 ├── 📚 README.md ....................... Complete guide
 ├── 🚀 DEPLOYMENT_QUICK_START.md ....... Quick deployment (READ THIS!)
 ├── 📖 FEATURES_GUIDE.md ............... Feature explanations
@@ -106,7 +105,8 @@ Android:
 
 ✅ Session Manager
    • Auto-play next track
-   • Loop entire session
+   • Repeat the whole sequence N times (or forever)
+   • Start / End tracks that play once, outside the cycles
    • Persistent storage (saves your playlists)
 
 ✅ Responsive Design
@@ -138,8 +138,7 @@ FOR LEARNING:
   📖 FEATURES_GUIDE.md ............. Feature explanations (12 min)
 
 REFERENCE:
-  📄 config.json ................... Audio configuration
-  🔧 .htaccess / web.config ........ Server configuration
+  📄 config.json ................... Audio configuration (generated)
 
 
 ⏱️ TIME ESTIMATE

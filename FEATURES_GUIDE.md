@@ -46,14 +46,34 @@ When OFF:
 - Pauses after each item
 - Great if you want breaks between chants
 
-### Loop Session
-When ON:
-- Repeats entire session from beginning when it ends
-- Perfect for continuous background chanting
+### Repeat the Whole Sequence
+Each item in the sequence has its own repetition count. The sequence as a whole
+has a separate cycle count, set under "Repeat the whole sequence".
 
-When OFF:
-- Stops after final item
-- Requires manual restart
+- Set it to 108 to run the entire sequence 108 times, then stop
+- Tick **Repeat forever (until stopped)** for continuous background chanting
+- "Now Playing" shows which cycle you are on
+
+### Session Start / Session End
+Two slots sit outside the cycle loop, each with its own track and repetition
+count:
+
+- **Session Start** plays once before the first cycle
+- **Session End** plays once after the last cycle
+
+This is how you get an opening and closing bell that rings once for the whole
+sitting rather than once per cycle. Leave either on `-- None --` to skip it.
+
+A full example - bell, then 108 cycles of a chant block, then a closing bell:
+
+| Slot | Track | Count |
+| --- | --- | --- |
+| Session Start | bell | 1x |
+| Sequence item 1 | om | 108x |
+| Sequence item 2 | sloka1 | 5x |
+| Sequence item 3 | sloka2 | 10x |
+| Repeat the whole sequence | | 108 cycles |
+| Session End | bell | 1x |
 
 ### Volume Control
 - Drag slider from 0% to 100%
@@ -116,13 +136,23 @@ If you have WAV, OGG, or other formats:
 
 ### Adding Your Own Audio
 1. Convert file to MP3
-2. Upload to `/audio/` folder
-3. Edit `app.js`:
-```javascript
-{ id: 'my_chant', name: '🕉 My Chant', file: 'audio/my_chant.mp3', duration: 0 }
+2. Drop it in the `/audio/` folder
+3. Regenerate `config.json` - the track list is built from the folder contents,
+   so there is no JavaScript to edit:
+```bash
+node tools/generate-config.js
 ```
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/generate-config.ps1
+```
+   Pushing to GitHub does this for you: the `Update config.json from audio files`
+   workflow runs on any push that touches `audio/`.
 4. Reload the app
 5. Your track appears in dropdown!
+
+The generator guesses a display name and category from the filename. Edit `name`
+or `category` in `config.json` if you want something different - the generator
+preserves hand-edited values and only adds or removes entries.
 
 ---
 

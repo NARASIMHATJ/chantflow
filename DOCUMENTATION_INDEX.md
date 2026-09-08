@@ -83,9 +83,9 @@ Navigation guide for all files.
 ### Config Files
 | File | Purpose |
 |------|---------|
-| `config.json` | Audio tracks list |
-| `.htaccess` | Apache server config |
-| `web.config` | IIS/Windows server config |
+| `config.json` | Audio tracks list (generated from `audio/`) |
+| `tools/generate-config.js` | Rebuilds `config.json` from `audio/` (Node) |
+| `tools/generate-config.ps1` | Same, for Windows without Node |
 | `.gitignore` | Git repository ignore |
 
 ### Audio Files
@@ -130,7 +130,8 @@ Navigation guide for all files.
 ### Player Features
 - Play, Pause, Stop controls → **FEATURES_GUIDE.md**
 - Auto-play next → **FEATURES_GUIDE.md**
-- Loop session → **FEATURES_GUIDE.md**
+- Repeating the whole sequence → **FEATURES_GUIDE.md**
+- Start / end tracks outside the loop → **FEATURES_GUIDE.md**
 - Volume control → **FEATURES_GUIDE.md**
 
 ### Playlist Features

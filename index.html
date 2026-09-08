@@ -38,6 +38,7 @@
                         <h3>Now Playing</h3>
                         <p id="currentTrack">No track selected</p>
                         <p id="sessionInfo" class="session-info"></p>
+                        <p id="cycleInfo" class="cycle-info"></p>
                     </div>
                     <div class="progress-container">
                         <div id="progressBar" class="progress-bar"></div>
@@ -70,6 +71,17 @@
                     </button>
                 </div>
 
+                <!-- Plays once, before the repeated sequence -->
+                <div class="edge-slot">
+                    <label for="startTrackSelect">🔔 Session Start <span class="edge-hint">(plays once, before the cycles)</span></label>
+                    <div class="edge-row">
+                        <select id="startTrackSelect">
+                            <option value="">-- None --</option>
+                        </select>
+                        <input type="number" id="startRepetitions" min="1" max="108" value="1" disabled title="Repetitions" aria-label="Start repetitions">
+                    </div>
+                </div>
+
                 <div class="track-selector">
                     <label for="trackSelect">Select Audio:</label>
                     <select id="trackSelect">
@@ -79,7 +91,7 @@
                     <label for="repetitionCount">Repetitions:</label>
                     <div class="repeat-input">
                         <input type="number" id="repetitionCount" min="1" max="1008" value="1">
-                        <div class="quick-buttons">
+                        <div class="quick-buttons" data-target="repetitionCount">
                             <button class="btn btn-tiny" data-count="11">11</button>
                             <button class="btn btn-tiny" data-count="21">21</button>
                             <button class="btn btn-tiny" data-count="54">54</button>
@@ -100,11 +112,44 @@
                     </div>
                 </div>
 
+                <!-- Whole-sequence repeat count -->
+                <div class="cycle-control">
+                    <label for="sessionCycles">🔁 Repeat the whole sequence:</label>
+                    <div class="repeat-input">
+                        <input type="number" id="sessionCycles" min="1" max="1008" value="1">
+                        <div class="quick-buttons" data-target="sessionCycles">
+                            <button class="btn btn-tiny" data-count="11">11</button>
+                            <button class="btn btn-tiny" data-count="21">21</button>
+                            <button class="btn btn-tiny" data-count="54">54</button>
+                            <button class="btn btn-tiny" data-count="108">108</button>
+                        </div>
+                    </div>
+                    <label class="inline-check">
+                        <input type="checkbox" id="loopForever">
+                        Repeat forever (until stopped)
+                    </label>
+                </div>
+
+                <!-- Plays once, after the last cycle -->
+                <div class="edge-slot">
+                    <label for="endTrackSelect">🔔 Session End <span class="edge-hint">(plays once, after all cycles)</span></label>
+                    <div class="edge-row">
+                        <select id="endTrackSelect">
+                            <option value="">-- None --</option>
+                        </select>
+                        <input type="number" id="endRepetitions" min="1" max="108" value="1" disabled title="Repetitions" aria-label="End repetitions">
+                    </div>
+                </div>
+
                 <!-- Session Stats -->
                 <div class="stats-panel">
                     <div class="stat">
                         <span class="stat-label">Total Items:</span>
                         <span id="totalItems" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Cycles:</span>
+                        <span id="totalCycles" class="stat-value">1</span>
                     </div>
                     <div class="stat">
                         <span class="stat-label">Estimated Duration:</span>
@@ -120,10 +165,6 @@
                     <label>
                         <input type="checkbox" id="autoPlayNext" checked>
                         Auto-play next item
-                    </label>
-                    <label>
-                        <input type="checkbox" id="loopSession">
-                        Loop entire session
                     </label>
                 </div>
                 <div class="settings-group">
